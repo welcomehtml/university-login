@@ -1,0 +1,157 @@
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>تسجيل الدخول - جامعة الملك عبد العزيز</title>
+  <style>
+    body {
+      font-family: 'Tahoma', sans-serif;
+      background-color: #f0f0f0;
+      margin: 0;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 450px;
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.1);
+      padding: 30px 20px;
+      box-sizing: border-box;
+      margin-bottom: 20px;
+    }
+
+    .logo-container {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+
+    .logo-container img {
+      max-width: 120px;
+    }
+
+    h2, h3 {
+      color: #006c35;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    input {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 15px;
+      box-sizing: border-box;
+    }
+
+    button {
+      width: 100%;
+      padding: 10px;
+      background-color: #006c35;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    .footer-image img {
+      width: 100%;
+      border-radius: 8px;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    p, ul {
+      text-align: right;
+      line-height: 1.8;
+      color: #333;
+    }
+
+    strong {
+      color: #006c35;
+    }
+
+    #studentNameDisplay {
+      color: #006c35;
+      font-weight: bold;
+      font-size: 18px;
+      text-align: center;
+      margin-top: -10px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- تسجيل الدخول -->
+  <div class="container" id="loginBox">
+    <div class="logo-container">
+      <img src="https://i.postimg.cc/T14NrGDT/image.jpg" alt="شعار الجامعة">
+    </div>
+    <h2>تسجيل الدخول - جامعة الملك عبد العزيز</h2>
+    <input type="text" id="username" placeholder="اسم المستخدم">
+    <input type="password" id="password" placeholder="كلمة المرور">
+    <button onclick="login()">دخول</button>
+  </div>
+
+  <!-- صفحة القبول -->
+  <div class="container hidden" id="successBox">
+    <div class="logo-container" style="justify-content: flex-start;">
+      <img src="https://i.postimg.cc/T14NrGDT/image.jpg" alt="شعار الجامعة">
+    </div>
+    <h3>تم قبولك في جامعة الملك عبد العزيز</h3>
+    <p id="studentNameDisplay"></p>
+
+    <p><strong>لإكمال عملية التسجيل، يرجى اتباع الخطوات التالية:</strong></p>
+    <ul>
+      <li>التواصل مع الجهة المعنية لسداد الرسوم الدراسية.</li>
+      <li>اتباع التعليمات والإرشادات المقدمة من الجهات المختصة لإتمام عملية السداد.</li>
+    </ul>
+
+    <p><strong>ملاحظة:</strong> سداد الرسوم هو شرط أساسي لإتمام عملية القبول.</p>
+
+    <p>
+      مع أطيب التحيات،<br>
+      <strong>عمادة القبول والتسجيل</strong><br>
+      جامعة الملك عبد العزيز
+    </p>
+
+    <p>للتواصل مع الجهات المعنية عبر منصاتنا:<br>Instagram - Facebook</p>
+  </div>
+
+  <!-- صورة أسفل الصفحة -->
+  <div class="container footer-image">
+    <img src="https://i.postimg.cc/Hk9R0M4B/image.jpg" alt="النفاذ الوطني الموحد">
+  </div>
+
+  <script>
+    const validUsername = 'usc1257';
+    const validPassword = '725146';
+
+    function login() {
+      const user = document.getElementById('username').value;
+      const pass = document.getElementById('password').value;
+
+      if (user === validUsername && pass === validPassword) {
+        document.getElementById('loginBox').classList.add('hidden');
+        document.getElementById('successBox').classList.remove('hidden');
+        document.getElementById('studentNameDisplay').textContent = 'الطالب: علي يحيى علي الفراص';
+      } else {
+        alert('بيانات الدخول غير صحيحة');
+      }
+    }
+  </script>
+
+</body>
+</html>
