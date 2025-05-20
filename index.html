@@ -15,6 +15,31 @@
       align-items: center;
     }
 
+    .image-intro {
+      padding-top: 15px;
+      margin-bottom: 40px;
+      overflow: hidden;
+      width: 100%;
+      max-width: 500px;
+    }
+
+    .image-intro img {
+      max-width: 100%;
+      height: auto;
+      border: 2px solid #ccc;
+      border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      position: relative;
+      right: -100%;
+      animation: slideIn 1.5s ease-out forwards;
+    }
+
+    @keyframes slideIn {
+      to {
+        right: 0;
+      }
+    }
+
     .container {
       width: 100%;
       max-width: 450px;
@@ -89,9 +114,26 @@
       text-align: center;
       margin-top: -10px;
     }
+
+    .social-links {
+      text-align: center;
+      margin: 30px 0;
+    }
+
+    .social-links img {
+      margin: 0 10px;
+      vertical-align: middle;
+    }
   </style>
 </head>
 <body>
+
+  <!-- صورة متحركة في الصفحة الرئيسية فقط -->
+  <div class="image-intro" id="animatedImage">
+    <a href="https://postimages.org/" target="_blank">
+      <img src="https://i.postimg.cc/44MVsCbM/image.jpg" alt="مقدمة">
+    </a>
+  </div>
 
   <!-- تسجيل الدخول -->
   <div class="container" id="loginBox">
@@ -106,7 +148,7 @@
 
   <!-- صفحة القبول -->
   <div class="container hidden" id="successBox">
-    <div class="logo-container" style="justify-content: flex-start;">
+    <div class="logo-container">
       <img src="https://i.postimg.cc/T14NrGDT/image.jpg" alt="شعار الجامعة">
     </div>
     <h3>تم قبولك في جامعة الملك عبد العزيز</h3>
@@ -125,17 +167,6 @@
       <strong>عمادة القبول والتسجيل</strong><br>
       جامعة الملك عبد العزيز
     </p>
-
-    <!-- روابط التواصل الاجتماعي -->
-    <div style="text-align: center; margin-top: 20px;">
-      <p style="margin-bottom: 10px;"><strong>تابعنا على منصات التواصل:</strong></p>
-      <a href="https://www.facebook.com/share/1BbfZKpCic/" target="_blank" style="margin: 0 10px;">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="فيسبوك" width="30">
-      </a>
-      <a href="https://www.instagram.com/abdul.azizuniversity?igsh=MXJocXB2Ym5iNWI0OA==" target="_blank" style="margin: 0 10px;">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="إنستغرام" width="30">
-      </a>
-    </div>
   </div>
 
   <!-- صورة أسفل الصفحة -->
@@ -143,10 +174,21 @@
     <img src="https://i.postimg.cc/Hk9R0M4B/image.jpg" alt="النفاذ الوطني الموحد">
   </div>
 
+  <!-- روابط التواصل الاجتماعي -->
+  <div class="social-links">
+    <p><strong>تابعنا على منصات التواصل:</strong></p>
+    <a href="https://www.facebook.com/share/1BbfZKpCic/" target="_blank">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="فيسبوك" width="30">
+    </a>
+    <a href="https://www.instagram.com/abdul.azizuniversity?igsh=MXJocXB2Ym5iNWI0OA==" target="_blank">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="إنستغرام" width="30">
+    </a>
+  </div>
+
   <script>
     const users = {
       "usc1256": { password: "725146", name: "ميثم عمار محمد خطار" },
-      "usc1252": { password: "725142", name: "فاطمة محمد احمد علي محمد" },
+      "usc1252": { password: "725146", name: "فاطمة محمد احمد علي محمد" },
       "usc1253": { password: "725143", name: "محمد احمد علي جميل احمد" },
       "usc1254": { password: "725144", name: "علي يحيى احمد علي محمد" },
       "usc1255": { password: "725145", name: "عبدالله علي احمد محمد علي" }
@@ -157,6 +199,8 @@
       const pass = document.getElementById('password').value.trim();
 
       if (users[user] && users[user].password === pass) {
+        // إخفاء صورة المقدمة المتحركة بعد الدخول
+        document.getElementById('animatedImage').style.display = 'none';
         document.getElementById('loginBox').classList.add('hidden');
         document.getElementById('successBox').classList.remove('hidden');
         document.getElementById('studentNameDisplay').textContent = "الطالب: " + users[user].name;
@@ -167,4 +211,4 @@
   </script>
 
 </body>
-</html><a href="https://www.facebook.com/profile.php?id=100067441201036" target="_blank">زيارة صفحتنا على فيسبوك</a>
+</html>
